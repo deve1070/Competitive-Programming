@@ -7,27 +7,27 @@
 class Solution:
     def searchBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
         
-        # stack=[root]
+        stack=[root]
 
-        # while stack:
-        #     curr=stack.pop()
-        #     if not curr:
-        #         return None
-        #     if curr.val==val:
-        #         return curr
-        #     elif curr.val < val:
-        #         stack.append(curr.left)
-        #     else:
-        #         stack.append(curr.right)
-        # return None
-
-        def helper(node,val):
-            if not node:
+        while stack:
+            curr=stack.pop()
+            if not curr:
                 return None
-            if node.val == val:
-                return node
-            elif node.val < val:
-                return helper(node.right,val)
+            if curr.val==val:
+                return curr
+            elif curr.val < val:
+                stack.append(curr.right)
             else:
-                return helper(node.left,val)
-        return helper(root,val)
+                stack.append(curr.left)
+        return None
+
+        # def helper(node,val):
+        #     if not node:
+        #         return None
+        #     if node.val == val:
+        #         return node
+        #     elif node.val < val:
+        #         return helper(node.right,val)
+        #     else:
+        #         return helper(node.left,val)
+        # return helper(root,val)
